@@ -1,0 +1,113 @@
+/* Reset básico para tirar margens padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #fff0f5, #ffe4e1); /* Fundo rosa suave */
+    color: #4a4a4a;
+    overflow-x: hidden;
+}
+
+header {
+    height: 100vh; /* Ocupa a tela inteira inicial */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #d6336c; /* Rosa escuro romântico */
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #888;
+    animation: bounce 2s infinite; /* Animação de pulo suave */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+main {
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Estado inicial dos momentos (invisível e deslocado para baixo) */
+.momento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1s ease-out; /* Suavidade na animação */
+}
+
+/* Inverte a ordem (texto em cima, foto embaixo) nos momentos pares para ficar dinâmico */
+.momento:nth-child(even) {
+    flex-direction: column-reverse;
+}
+
+.momento img {
+    max-width: 100%;
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(214, 51, 108, 0.2);
+    margin-bottom: 25px;
+    border: 6px solid white;
+    transition: transform 0.3s ease;
+}
+
+.momento img:hover {
+    transform: scale(1.03); /* Leve zoom ao passar o mouse */
+}
+
+.momento h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d6336c;
+    margin-bottom: 15px;
+}
+
+.momento p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* CLASSE MÁGICA: O JavaScript vai adicionar essa classe quando o elemento aparecer na tela */
+.momento.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    text-align: center;
+    padding: 80px 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #d6336c;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    header h1 { font-size: 2.8rem; }
+    .momento img { width: 100%; }
+    .momento h2 { font-size: 2rem; }
+}
